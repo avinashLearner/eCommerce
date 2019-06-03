@@ -1,0 +1,105 @@
+<form #f="ngForm">
+  <div class="lead">
+    Personal Details
+  </div>
+  <div class="form-group">
+    <label for="">Name</label>
+    <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" placeholder="Name" required>
+    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+      <div *ngIf="name.errors.required">Name is required.</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="">Email</label>
+      <input #email="ngModel" name="email" [(ngModel)]="shipping.email" type="text" class="form-control" placeholder="Email" required>
+      <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+        <div *ngIf="name.errors.required">Email is required.</div>
+      </div>
+    </div>
+  
+    <div class="form-group col-md-6">
+      <label for="">Phone</label>
+      <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="text" class="form-control" placeholder="Phone Number" required>
+      <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+        <div *ngIf="name.errors.required">Phone is required.</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="lead">
+    Delivery Address 
+    <button (click)="getLocation()" class="pull-right btn btn-sm btn-info">Get Location</button>
+  </div>
+  <div class="form-group">
+    <label for="">Address</label>
+    <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="shipping.addressLine1" type="text" class="form-control" placeholder="Line 1" required>
+    <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
+      <div *ngIf="addressLine1.errors.required">Address Line 1 is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for=""></label>
+    <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="shipping.addressLine2" type="text" class="form-control" placeholder="Line 2" required>
+    <div class="alert alert-danger" *ngIf="addressLine2.touched && addressLine2.invalid">
+      <div *ngIf="addressLine2.errors.required">Address Line 2 is required.</div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <label for="">City</label>
+      <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" placeholder="City" required>
+    </div>
+
+    <div class="form-group col-md-5">
+      <label for="">State</label>
+      <input #state="ngModel" name="state" [(ngModel)]="shipping.state" type="text" class="form-control" placeholder="State" required>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="">Pincode</label>
+      <input #pincode="ngModel" name="pincode" [(ngModel)]="shipping.pincode" type="text" class="form-control" placeholder="Pincode" maxlength="6" minlength="6" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+        <div *ngIf="city.errors.required">City is required.</div>
+      </div>
+      <div class="alert alert-danger" *ngIf="state.touched && state.invalid">
+        <div *ngIf="state.errors.required">State is required.</div>
+      </div>
+      <div class="alert alert-danger" *ngIf="pincode.touched && pincode.invalid">
+        <div *ngIf="city.errors.required">Pincode is required.</div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="lead">
+    Payment Options
+  </div>
+  <div class="custom-control custom-radio">
+    <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" checked>
+    <label class="custom-control-label" for="customRadio1">Cash on delivery</label>
+  </div>
+  <div class="custom-control custom-radio">
+    <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
+    <label class="custom-control-label" for="customRadio2">Credit Card</label>
+  </div>
+  <div class="custom-control custom-radio">
+    <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
+    <label class="custom-control-label" for="customRadio3">Debit Card</label>
+  </div>
+  <div class="custom-control custom-radio">
+    <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
+    <label class="custom-control-label" for="customRadio4">Wallet</label>
+  </div>
+  <br>
+  <button 
+    [disabled]="!f.valid"
+    (click)="placeOrder()"
+    class="btn btn-primary">Place Order</button>
+</form>

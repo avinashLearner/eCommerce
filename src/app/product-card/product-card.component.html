@@ -1,0 +1,30 @@
+<div *ngIf="product.imageUrl || product.title" class="card">
+  <img  *ngIf="product.imageUrl" [src]="product.imageUrl" class="card-img-top" alt="product.title">
+  <div class="card-body">
+    <h5 class="card-title">{{product.title}}</h5>
+    <p class="card-text">{{ product.price | currency:'INR':true }}</p>
+  </div>
+  <div *ngIf="showActions && shoppingCart" class="card-footer">
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group mr-5" role="group" aria-label="First group">
+          <button 
+            (click)="buyNow()"
+            type="button" 
+            class="btn btn-outline-primary">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Buy &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </button>
+      </div>
+      <div class="btn-group" role="group" aria-label="Second group">
+        <button 
+          *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity"
+          (click)="addToCart()"
+          class="btn btn-primary btn-block">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add to Cart&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+        <ng-template #updateQuantity>
+            <app-product-quantity [product]="product" [shopping-cart]="shoppingCart" ></app-product-quantity>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

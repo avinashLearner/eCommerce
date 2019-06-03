@@ -1,0 +1,36 @@
+.container {
+    text-align: center;
+  }
+  
+  .title {
+    margin-bottom: 40px;
+  }
+  
+  .button-login {
+    display: block;
+    margin: 15px auto;
+    padding: 15px;
+    padding-left: 20px;
+    width: 250px;
+    text-align: left;
+    color: white;
+    border: none;
+    outline: none;
+  }
+  
+  .button-login:hover, 
+  .button-login:focus, 
+  .button-login:active {
+    color: white;
+    cursor: pointer;
+  }
+    
+  .button-google {
+    background-color: #DB4437;
+  }
+  
+  .button-google:hover,
+  .button-google:focus,
+  .button-google:active {
+    background-color: #DB4437;  
+  }
